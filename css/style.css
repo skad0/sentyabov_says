@@ -28,12 +28,23 @@ div#container {
 }
 div.phrase-container {
 	margin: 15px 0;
+	height:100px;
 }
 span.note {
 	color: #aaa;
-	font-size: 1.4em;
+	font-size: 1.6em;
 }
 span.phrase {
 	color: #fff;
-	font-size: 1.8em;
+	font-size: 2em;
+}
+div#footer {
+	z-index: 1;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 10px;
+}
+div#footer > a {
+	color: #666;
 }
