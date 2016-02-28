@@ -14,6 +14,8 @@ var phrases = [
 	'Сливной бочок как из учебника по физике',
 	'Что кушал что радио слушал',
 	'Парашют в подтяжки и готовьтесь к катапультированию'
+	'Сатурну больше не наливать',
+	'Выпьешь полбутылки - яйца на затылке'
 ];
 
 function getRandom(min, max)
@@ -25,7 +27,7 @@ function getRandom(min, max)
 $(document).ready(function(){
 	$(document).on('click', '#refresh_phrase', function(e){
 		e.preventDefault();
-		var randombg = getRandom(1,5);
+		var randombg = getRandom(1,13);
 		$('body').css('background-image', 'url(images/bg/' + randombg + '.jpg)');
 		$('#phrase').html(phrases[getRandom(0, phrases.length-1)]);
 	});
