@@ -6,7 +6,9 @@ var phrases = [
 	'Моя голова круглая, кроме тех мест где она не круглая',
 	'Тю-тю-тю...',
 	'Как по пизде ладошкой',
-	'Инциатива ебет инициатора'
+	'Инциатива ебет инициатора',
+	'Сатурну больше не наливать',
+	'Выпьешь полбутылки - яйца на затылке'
 ];
 
 function getRandom(min, max)
@@ -18,7 +20,7 @@ function getRandom(min, max)
 $(document).ready(function(){
 	$(document).on('click', '#refresh_phrase', function(e){
 		e.preventDefault();
-		var randombg = getRandom(1,5);
+		var randombg = getRandom(1,13);
 		$('body').css('background-image', 'url(images/bg/' + randombg + '.jpg)');
 		$('#phrase').html(phrases[getRandom(0, phrases.length-1)]);
 	});
