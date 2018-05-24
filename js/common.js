@@ -18,17 +18,47 @@ var phrases = [
 	'Выпьешь полбутылки - яйца на затылке'
 ];
 
-function getRandom(min, max)
-{
-  return Math.ceil(Math.random() * (max - min) + min);
+function getRandom(min, max) {
+	return Math.ceil(Math.random() * (max - min) + min);
 }
 
+function getRandomItem(array, prev) {
+	var item;
 
-$(document).ready(function(){
-	$(document).on('click', '#refresh_phrase', function(e){
-		e.preventDefault();
-		var randombg = getRandom(1,13);
-		$('body').css('background-image', 'url(images/bg/' + randombg + '.jpg)');
-		$('#phrase').html(phrases[getRandom(0, phrases.length-1)]);
+	do {
+		item = array[getRandom(0, array.length - 1)];
+	} while (item === prev);
+
+	return item;
+}
+
+function loadImages(images) {
+	images.forEach(function(src) {
+		var image = new Image();
+		image.src = src;
 	});
+}
+
+var imagesCount = 13;
+var images = (Array.apply(null, Array(13))).map(function(el, index) {
+	return 'images/bg/' + (index + 1) + '.jpg';
 });
+
+window.onload = function() {
+	loadImages(images);
+
+	var action = document.getElementById('refresh_phrase');
+	var phraseContainer = document.getElementById('phrase');
+	var prevBg = '';
+	var prevPhrase = '';
+
+	action.addEventListener('pointerdown', function(e) {
+		e.preventDefault();
+
+		var bg = getRandomItem(images, prevBg);
+		var phrase = getRandomItem(phrases, prevPhrase);
+
+		document.body.style['background-image'] = 'url(' + bg + ')';
+		phraseContainer.innerText = phrase;
+	});
+};
