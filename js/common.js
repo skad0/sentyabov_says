@@ -39,6 +39,19 @@ function loadImages(images) {
 	});
 }
 
+var prevBg = '';
+var prevPhrase = '';
+
+function onActionClick(e) {
+	e.preventDefault();
+
+	var bg = getRandomItem(images, prevBg);
+	var phrase = getRandomItem(phrases, prevPhrase);
+
+	document.body.style['background-image'] = 'url(' + bg + ')';
+	phraseContainer.innerText = phrase;
+}
+
 var imagesCount = 13;
 var images = (Array.apply(null, Array(13))).map(function(el, index) {
 	return 'images/bg/' + (index + 1) + '.jpg';
@@ -49,16 +62,7 @@ window.onload = function() {
 
 	var action = document.getElementById('refresh_phrase');
 	var phraseContainer = document.getElementById('phrase');
-	var prevBg = '';
-	var prevPhrase = '';
 
-	action.addEventListener('pointerdown', function(e) {
-		e.preventDefault();
-
-		var bg = getRandomItem(images, prevBg);
-		var phrase = getRandomItem(phrases, prevPhrase);
-
-		document.body.style['background-image'] = 'url(' + bg + ')';
-		phraseContainer.innerText = phrase;
-	});
+	action.addEventListener('pointerdown', onActionClick);
+	action.addEventListener('click', onActionClick);
 };
