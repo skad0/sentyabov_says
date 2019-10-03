@@ -15,14 +15,15 @@ var phrases = [
 	'Что кушал что радио слушал',
 	'Парашют в подтяжки и готовьтесь к катапультированию',
 	'Сатурну больше не наливать',
-	'Выпьешь полбутылки - яйца на затылке'
+	'Выпьешь полбутылки - яйца на затылке',
+	'Не хочешь срать - не мучай жопу'
 ];
 
 function getRandom(min, max) {
 	return Math.ceil(Math.random() * (max - min) + min);
 }
 
-function getRandomItem(array, prev) {
+function getNextRandomItem(array, prev) {
 	var item;
 
 	do {
@@ -55,8 +56,8 @@ window.onload = function() {
 	function onActionClick(e) {
 		e.preventDefault();
 
-		var bg = getRandomItem(images, prevBg);
-		var phrase = getRandomItem(phrases, prevPhrase);
+		var bg = getNextRandomItem(images, prevBg);
+		var phrase = getNextRandomItem(phrases, prevPhrase);
 
 		prevBg = bg;
 		prevPhrase = phrase;
